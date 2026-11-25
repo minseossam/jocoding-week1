@@ -28,6 +28,8 @@ form.addEventListener('submit', function (e) {
     .then(function (res) {
       if (res.ok) {
         form.reset();
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'contact_submit' });
         show('문의가 접수되었습니다. 감사합니다!', 'ok');
       } else {
         show('전송에 실패했어요. 잠시 뒤 다시 시도해 주세요.', 'err');

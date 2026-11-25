@@ -9,6 +9,7 @@ html { scroll-behavior: smooth; }
   --line: #e1e5f2;
   --accent: #4a6cf7;
   --accent-dark: #3956d6;
+  --warm: #e0543c;
 }
 
 body {
@@ -34,12 +35,13 @@ a { color: var(--accent-dark); }
 /* ---------- 본문 ---------- */
 main { padding: 34px 0 20px; }
 h1 { font-size: 30px; line-height: 1.35; margin: 0 0 10px; letter-spacing: -0.01em; }
-h2 { font-size: 22px; margin: 36px 0 10px; line-height: 1.4; }
-h3 { font-size: 18px; margin: 24px 0 6px; }
+h2 { font-size: 22px; margin: 34px 0 10px; line-height: 1.4; }
+h3 { font-size: 18px; margin: 22px 0 6px; }
 .lead { font-size: 17px; color: var(--sub); margin: 0 0 24px; }
 .meta { font-size: 14px; color: var(--sub); margin: 0 0 22px; }
 p, ul, ol { margin: 0 0 16px; }
 li { margin-bottom: 6px; }
+.fine { font-size: 13px; color: var(--sub); }
 
 .card {
   background: var(--card);
@@ -58,30 +60,33 @@ li { margin-bottom: 6px; }
 .note { background: #eef2ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 16px; margin: 18px 0; font-size: 15px; }
 .warn { background: #fff6e8; border-left-color: #f0a030; }
 
+.crumbs { font-size: 14px; color: var(--sub); margin: 0 0 14px; }
+.crumbs a { color: var(--sub); }
+
 /* 표 */
 .table-wrap { overflow-x: auto; margin: 14px 0 20px; }
 table { border-collapse: collapse; width: 100%; font-size: 15px; background: #fff; }
 th, td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; }
 th { background: #f0f3fb; }
-td.num, th.num { text-align: right; white-space: nowrap; }
 
 /* 카드 목록 */
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 26px; }
+.grid.one { grid-template-columns: 1fr; }
 .grid a.item { display: block; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px; text-decoration: none; color: var(--text); }
 .grid a.item:hover { border-color: var(--accent); }
 .grid .item b { display: block; font-size: 17px; margin-bottom: 4px; }
 .grid .item span { color: var(--sub); font-size: 14px; }
+.shapes-grid a.shape { display: flex; gap: 14px; align-items: center; }
+.shapes-grid a.shape > span { display: block; }
 
 /* ---------- 버튼·입력 ---------- */
 .btn {
-  font: inherit; font-size: 17px; font-weight: bold;
+  display: inline-block; font: inherit; font-size: 17px; font-weight: bold;
   padding: 12px 26px; border: 0; border-radius: 10px;
-  background: var(--accent); color: #fff; cursor: pointer;
+  background: var(--accent); color: #fff; cursor: pointer; text-decoration: none;
 }
 .btn:hover { background: var(--accent-dark); }
 .btn:disabled { background: #a9b6f5; cursor: default; }
-.btn.ghost { background: #fff; color: var(--accent-dark); border: 1px solid var(--accent); }
-.btn.ghost:hover { background: #eef2ff; }
 
 input, select, textarea {
   font: inherit; font-weight: normal;
@@ -90,36 +95,34 @@ input, select, textarea {
 input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
 textarea { resize: vertical; }
 
-/* ---------- 로또 도구 ---------- */
-.tool { text-align: center; }
-.tool .row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
-.tool label { font-size: 15px; color: var(--sub); }
-#sets { margin-top: 22px; display: flex; flex-direction: column; gap: 10px; align-items: center; min-height: 30px; }
-.set { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; }
-.set .tag { font-size: 13px; color: var(--sub); width: 34px; text-align: right; }
-.ball {
-  width: 46px; height: 46px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; font-weight: bold; color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, .4);
-}
-.r1 { background: #f2b705; color: #222; text-shadow: none; }
-.r2 { background: #3b82f6; }
-.r3 { background: #ef4444; }
-.r4 { background: #6b7280; }
-.r5 { background: #22c55e; }
-#copy-msg { min-height: 22px; font-size: 14px; color: #1a8f4b; margin: 10px 0 0; }
-.tool .fine { font-size: 13px; color: var(--sub); margin: 12px 0 0; }
+/* ---------- 얼굴형 도구 ---------- */
+.measure-wrap { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.measure { width: 230px; max-width: 100%; flex: 0 0 auto; }
+.measure-list { flex: 1 1 260px; margin: 0; padding-left: 20px; }
 
-/* ---------- 계산기 ---------- */
-.calc { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
-.calc input { width: 140px; }
-#calc-out p { margin: 6px 0; }
-#calc-out b { color: var(--accent-dark); }
+.face-form .inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 16px; }
+fieldset.jaw-shape { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px 6px; margin: 0 0 18px; }
+fieldset.jaw-shape legend { font-weight: bold; font-size: 14px; padding: 0 6px; }
+fieldset.jaw-shape label { display: inline-flex; align-items: center; gap: 6px; margin: 0 16px 6px 0; font-size: 15px; }
+fieldset.jaw-shape input { padding: 0; }
+.msg { color: #d33; min-height: 22px; margin: 10px 0 0; font-size: 15px; }
+
+.result .name { color: var(--accent-dark); }
+.res-top { display: flex; gap: 16px; align-items: center; margin-bottom: 8px; }
+.res-top p { margin: 0; font-size: 17px; }
+.face-ico { flex: 0 0 auto; }
+.hero-face { display: flex; gap: 18px; align-items: center; margin-bottom: 10px; }
+.hero-face .lead { margin: 0; }
+
+.faq h3 { margin-top: 18px; }
 
 /* ---------- 폼 ---------- */
-form { display: flex; flex-direction: column; gap: 16px; }
+form { display: flex; flex-direction: column; }
 label.f { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: bold; }
+form#partner-form { gap: 16px; }
 .opt { font-weight: normal; color: #8a8fab; }
+label.agree { flex-direction: row; align-items: flex-start; gap: 8px; font-weight: normal; }
+label.agree input { margin-top: 5px; padding: 0; }
 #status { margin: 0; min-height: 22px; text-align: center; }
 #status.ok { color: #1a8f4b; }
 #status.err { color: #d33; }
@@ -133,9 +136,12 @@ label.f { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font
 @media (max-width: 560px) {
   h1 { font-size: 25px; }
   .card, .article { padding: 22px 16px; }
-  .ball { width: 40px; height: 40px; font-size: 16px; }
+  .hero-face { flex-direction: column; align-items: flex-start; }
 }
 
-/* 현재 위치(빵부스러기) */
-.crumbs { font-size: 14px; color: var(--sub); margin: 0 0 14px; }
-.crumbs a { color: var(--sub); }
+/* 한 줄 요약·표·그림 설명 (AI 검색과 사람 모두 먼저 읽는 부분) */
+.summary { background: #eef2ff; border: 1px solid #cdd7ff; border-radius: 12px; padding: 14px 16px; margin: 4px 0 8px; }
+.summary p { margin: 4px 0 0; }
+figure.hero-face { margin: 0 0 10px; }
+figure.hero-face figcaption { margin: 0; }
+table th[scope="row"] { width: 28%; white-space: nowrap; }
