@@ -7,9 +7,60 @@
   <link href="./style.css" rel="stylesheet">
 </head>
 <body>
-  <h1> 안녕 </h1>
-  <button id="btn">로또 번호 추천받기</button>
-  <div id="balls"></div>
+  <h1 class="page-title"> 안녕 </h1>
+
+  <!-- 1. 로또 번호 뽑기 -->
+  <section class="card lotto">
+    <h2>로또 번호 추천</h2>
+    <button id="btn" class="btn">로또 번호 추천받기</button>
+    <div id="balls"></div>
+  </section>
+
+  <!-- 2. 제휴 문의 -->
+  <section class="card" id="partner">
+    <h2>제휴 문의</h2>
+    <p class="sub">협업·광고·제휴 제안을 남겨 주세요. 확인 후 이메일로 답변드립니다.</p>
+
+    <form id="partner-form" action="https://formspree.io/f/xgakrbkz" method="POST">
+      <label>회사·브랜드명
+        <input type="text" name="company" required placeholder="예) 홍길동 컴퍼니">
+      </label>
+
+      <label>담당자 이름
+        <input type="text" name="name" required placeholder="이름">
+      </label>
+
+      <label>이메일
+        <input type="email" name="email" required placeholder="name@example.com">
+      </label>
+
+      <label>연락처 <span class="opt">(선택)</span>
+        <input type="tel" name="phone" placeholder="010-0000-0000">
+      </label>
+
+      <label>제휴 유형
+        <select name="type" required>
+          <option value="">선택해 주세요</option>
+          <option>광고·협찬</option>
+          <option>공동 콘텐츠·콜라보</option>
+          <option>강의·교육 제안</option>
+          <option>기타</option>
+        </select>
+      </label>
+
+      <label>문의 내용
+        <textarea name="message" rows="6" required placeholder="제안 내용을 자유롭게 적어 주세요."></textarea>
+      </label>
+
+      <!-- 스팸 방지용 숨김 칸 -->
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+
+      <button type="submit" id="submit-btn" class="btn">문의 보내기</button>
+      <p id="status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
   <script defer src="./main.js"></script>
+  <script defer src="./partner.js"></script>
 </body>
 </html>
