@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>사이트 소개 | 로또 확률 노트</title>
+  <meta name="description" content="로또 확률 노트가 어떤 사이트인지, 번호 추천기가 어떻게 동작하는지, 글을 어떻게 만드는지 소개합니다.">
+  <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="./">로또 확률 노트</a>
+  <nav aria-label="주요 메뉴">
+    <a href="./">번호 추천</a>
+    <a href="./probability.html">확률 계산기</a>
+    <a href="./guides.html">가이드</a>
+    <a href="./about.html" aria-current="page">소개</a>
+    <a href="./contact.html">문의</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <article class="article">
+    <h1>사이트 소개</h1>
+    <p class="lead">로또 확률 노트는 번호를 뽑는 재미와, 그 뒤에 있는 확률의 사실을 함께 전하려고 만든 개인 학습 프로젝트입니다.</p>
+
+    <h2>이 사이트가 하는 일</h2>
+    <ul>
+      <li><b>번호 추천기</b>: 로또 6/45 번호를 1~5세트까지 무작위로 뽑아 줍니다.</li>
+      <li><b>확률 계산기</b>: 등수별 당첨 확률 표와, 구매 장수에 따른 당첨 확률 계산을 제공합니다.</li>
+      <li><b>가이드 글</b>: 확률 이해, 흔한 오해 바로잡기, 책임 있는 구매 방법을 정리합니다.</li>
+    </ul>
+
+    <h2>왜 만들었나요</h2>
+    <p>운영자는 웹 만들기를 배우는 과정에서 ‘실제로 쓸 수 있는 작은 도구’를 만들어 보기로 했고, 누구나 한 번쯤 해 보는 로또 번호 뽑기를 첫 주제로 골랐습니다. 번호 추천은 재미 요소이지만 확률의 사실을 숨기고 싶지는 않아서, 당첨 확률과 책임 있는 구매에 관한 내용을 함께 담았습니다.</p>
+
+    <h2>번호는 어떻게 만들어지나요</h2>
+    <p>1~45 중 겹치지 않는 6개를 브라우저의 보안 난수 생성기로 뽑습니다. 모든 계산은 이용자의 기기 안에서 이루어지고, 뽑힌 번호는 서버로 전송되거나 저장되지 않습니다. 특정 번호나 과거 당첨 통계를 반영하지 않으므로 모든 조합이 같은 가능성으로 뽑힙니다.</p>
+
+    <h2>글은 어떻게 만들어지나요</h2>
+    <p>글은 AI 도구의 도움을 받아 작성했고, 본문의 확률 수치(8,145,060가지, 등수별 경우의 수 등)는 조합 계산식으로 직접 계산해 확인했습니다. 잘못된 내용을 발견하시면 <a href="./contact.html">문의 페이지</a>로 알려 주세요. 확인 후 고치겠습니다.</p>
+
+    <h2>알려 드리는 말씀</h2>
+    <ul>
+      <li>이 사이트는 동행복권 및 복권 판매처와 관계가 없으며, 복권 판매·구매 대행을 하지 않습니다.</li>
+      <li>사이트의 내용은 정보 제공과 오락 목적이고 당첨을 보장하지 않습니다. 자세한 내용은 <a href="./terms.html">이용약관·면책</a>을 참고하세요.</li>
+      <li>이용자의 정보를 다루는 방법은 <a href="./privacy.html">개인정보처리방침</a>에 있습니다.</li>
+    </ul>
+  </article>
+</main>
+
+<footer class="site-footer"><div class="wrap">
+  <p>로또 확률 노트는 동행복권과 관계없는 개인 학습 프로젝트입니다. 공식 정보는 <a href="https://www.dhlottery.co.kr" target="_blank" rel="noopener">동행복권</a>에서 확인하세요.</p>
+  <p>도박 문제로 도움이 필요하면 한국도박문제예방치유원 헬프라인 1336으로 상담할 수 있습니다.</p>
+  <p><a href="./about.html">소개</a> · <a href="./contact.html">문의</a> · <a href="./privacy.html">개인정보처리방침</a> · <a href="./terms.html">이용약관·면책</a></p>
+  <p>© 2026 로또 확률 노트</p>
+</div></footer>
+</body>
+</html>

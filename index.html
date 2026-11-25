@@ -3,64 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lotto Number Generator</title>
+  <title>로또 번호 추천기 · 로또 6/45 확률 노트</title>
+  <meta name="description" content="버튼 한 번으로 로또 6/45 번호를 무작위로 추천받고, 등수별 당첨 확률과 올바른 구매 상식까지 한곳에서 확인하세요.">
   <link href="./style.css" rel="stylesheet">
 </head>
 <body>
-  <h1 class="page-title"> 안녕 </h1>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="./">로또 확률 노트</a>
+  <nav aria-label="주요 메뉴">
+    <a href="./" aria-current="page">번호 추천</a>
+    <a href="./probability.html">확률 계산기</a>
+    <a href="./guides.html">가이드</a>
+    <a href="./about.html">소개</a>
+    <a href="./contact.html">문의</a>
+  </nav>
+</div></header>
 
-  <!-- 1. 로또 번호 뽑기 -->
-  <section class="card lotto">
-    <h2>로또 번호 추천</h2>
-    <button id="btn" class="btn">로또 번호 추천받기</button>
-    <div id="balls"></div>
+<main class="wrap">
+  <h1>로또 번호 추천기</h1>
+  <p class="lead">로또 6/45 번호를 무작위로 뽑아 주는 무료 도구입니다. 번호를 뽑는 재미와 함께, 당첨 확률이 실제로 어느 정도인지도 알아 두세요.</p>
+
+  <section class="card tool" aria-labelledby="tool-title">
+    <h2 id="tool-title">번호 뽑기</h2>
+    <div class="row">
+      <label for="count">세트 수</label>
+      <select id="count">
+        <option value="1" selected>1세트</option>
+        <option value="2">2세트</option>
+        <option value="3">3세트</option>
+        <option value="4">4세트</option>
+        <option value="5">5세트</option>
+      </select>
+      <button id="btn" class="btn" type="button">로또 번호 추천받기</button>
+    </div>
+    <div id="sets" aria-live="polite"></div>
+    <div class="row" style="margin-top:14px"><button id="copy" class="btn ghost" type="button" hidden>번호 복사하기</button></div>
+    <p id="copy-msg" role="status"></p>
+    <p class="fine">추천 번호는 재미로 참고하는 무작위 번호이며, 당첨을 보장하거나 예측하지 않습니다.</p>
   </section>
 
-  <!-- 2. 제휴 문의 -->
-  <section class="card" id="partner">
-    <h2>제휴 문의</h2>
-    <p class="sub">협업·광고·제휴 제안을 남겨 주세요. 확인 후 이메일로 답변드립니다.</p>
+  <h2>이 사이트에서 볼 수 있는 것</h2>
+  <div class="grid">
+    <a class="item" href="./probability.html"><b>확률 계산기</b><span>등수별 확률 표와, 내가 N장을 샀을 때 당첨 확률 계산</span></a>
+    <a class="item" href="./guide-probability.html"><b>로또 확률 쉽게 이해하기</b><span>814만 분의 1이 얼마나 어려운 숫자인지 풀어서 설명</span></a>
+    <a class="item" href="./guide-myths.html"><b>흔한 오해 5가지</b><span>“오래 안 나온 번호”, “자동이 유리” 같은 믿음 짚어 보기</span></a>
+    <a class="item" href="./guide-responsible.html"><b>책임 있는 구매 가이드</b><span>예산 정하기와 위험 신호, 도움받을 수 있는 곳</span></a>
+  </div>
 
-    <form id="partner-form" action="https://formspree.io/f/xgakrbkz" method="POST">
-      <label>회사·브랜드명
-        <input type="text" name="company" required placeholder="예) 홍길동 컴퍼니">
-      </label>
-
-      <label>담당자 이름
-        <input type="text" name="name" required placeholder="이름">
-      </label>
-
-      <label>이메일
-        <input type="email" name="email" required placeholder="name@example.com">
-      </label>
-
-      <label>연락처 <span class="opt">(선택)</span>
-        <input type="tel" name="phone" placeholder="010-0000-0000">
-      </label>
-
-      <label>제휴 유형
-        <select name="type" required>
-          <option value="">선택해 주세요</option>
-          <option>광고·협찬</option>
-          <option>공동 콘텐츠·콜라보</option>
-          <option>강의·교육 제안</option>
-          <option>기타</option>
-        </select>
-      </label>
-
-      <label>문의 내용
-        <textarea name="message" rows="6" required placeholder="제안 내용을 자유롭게 적어 주세요."></textarea>
-      </label>
-
-      <!-- 스팸 방지용 숨김 칸 -->
-      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
-
-      <button type="submit" id="submit-btn" class="btn">문의 보내기</button>
-      <p id="status" role="status" aria-live="polite"></p>
-    </form>
+  <section class="card">
+    <h2>추천 번호는 어떻게 만들어지나요?</h2>
+    <p>이 도구는 1부터 45까지의 숫자 중에서 서로 겹치지 않는 6개를 무작위로 고른 뒤, 보기 편하도록 작은 수부터 나열합니다. 난수는 브라우저에 내장된 보안 난수 생성기를 사용하고, 번호는 내 기기 안에서만 계산됩니다. 서버로 전송하거나 저장하지 않습니다.</p>
+    <p>모든 번호 조합이 뽑힐 가능성은 완전히 같습니다. 특정 번호가 “더 잘 나오는” 구조는 없으며, 어떤 조합을 고르든 1등 확률은 똑같이 8,145,060분의 1입니다. 자세한 계산은 <a href="./guide-probability.html">로또 확률 쉽게 이해하기</a>에서 볼 수 있습니다.</p>
+    <p class="note warn">만 19세 미만은 복권을 구매할 수 없습니다. 복권 구매는 여가 활동의 범위 안에서만 하시고, 도움이 필요하다면 <a href="./guide-responsible.html">책임 있는 구매 가이드</a>를 읽어 보세요.</p>
   </section>
+</main>
 
-  <script defer src="./main.js"></script>
-  <script defer src="./partner.js"></script>
+<footer class="site-footer"><div class="wrap">
+  <p>로또 확률 노트는 동행복권과 관계없는 개인 학습 프로젝트입니다. 공식 정보는 <a href="https://www.dhlottery.co.kr" target="_blank" rel="noopener">동행복권</a>에서 확인하세요.</p>
+  <p>도박 문제로 도움이 필요하면 한국도박문제예방치유원 헬프라인 1336으로 상담할 수 있습니다.</p>
+  <p><a href="./about.html">소개</a> · <a href="./contact.html">문의</a> · <a href="./privacy.html">개인정보처리방침</a> · <a href="./terms.html">이용약관·면책</a></p>
+  <p>© 2026 로또 확률 노트</p>
+</div></footer>
+
+<script defer src="./main.js"></script>
 </body>
 </html>

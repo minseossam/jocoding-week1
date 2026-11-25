@@ -1,96 +1,137 @@
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg: #f4f6fb;
+  --card: #fff;
+  --text: #1c2033;
+  --sub: #5d6385;
+  --line: #e1e5f2;
+  --accent: #4a6cf7;
+  --accent-dark: #3956d6;
+}
 
 body {
   margin: 0;
-  padding: 40px 16px;
-  font-family: "Malgun Gothic", system-ui, sans-serif;
-  background: #f3f5fb;
-  color: #1c2033;
+  font-family: "Pretendard", "Malgun Gothic", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
 }
 
-.page-title { text-align: center; margin: 0 0 24px; }
+a { color: var(--accent-dark); }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 18px; }
 
-/* 공통 카드 */
+/* ---------- 머리글·메뉴 ---------- */
+.site-header { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px 20px; padding-top: 12px; padding-bottom: 12px; }
+.brand { font-weight: 800; font-size: 19px; color: var(--text); text-decoration: none; }
+.site-header nav { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.site-header nav a { color: var(--sub); text-decoration: none; font-size: 15px; padding: 4px 0; border-bottom: 2px solid transparent; }
+.site-header nav a:hover { color: var(--text); }
+.site-header nav a[aria-current="page"] { color: var(--accent-dark); font-weight: bold; border-bottom-color: var(--accent); }
+
+/* ---------- 본문 ---------- */
+main { padding: 34px 0 20px; }
+h1 { font-size: 30px; line-height: 1.35; margin: 0 0 10px; letter-spacing: -0.01em; }
+h2 { font-size: 22px; margin: 36px 0 10px; line-height: 1.4; }
+h3 { font-size: 18px; margin: 24px 0 6px; }
+.lead { font-size: 17px; color: var(--sub); margin: 0 0 24px; }
+.meta { font-size: 14px; color: var(--sub); margin: 0 0 22px; }
+p, ul, ol { margin: 0 0 16px; }
+li { margin-bottom: 6px; }
+
 .card {
-  max-width: 520px;
-  margin: 0 auto 28px;
-  background: #fff;
+  background: var(--card);
+  border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 32px 28px;
-  box-shadow: 0 6px 24px rgba(30, 40, 90, 0.08);
+  padding: 28px 24px;
+  margin-bottom: 26px;
+  box-shadow: 0 4px 18px rgba(30, 40, 90, 0.05);
 }
-.card h2 { margin: 0 0 6px; font-size: 26px; }
-.sub { margin: 0 0 24px; color: #6b7090; font-size: 15px; }
+.card > h2:first-child { margin-top: 0; }
 
-/* 공통 버튼 */
+.article { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 30px 26px; }
+.article h2 { border-top: 1px solid var(--line); padding-top: 24px; }
+.article h2:first-of-type { border-top: 0; padding-top: 0; }
+
+.note { background: #eef2ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 16px; margin: 18px 0; font-size: 15px; }
+.warn { background: #fff6e8; border-left-color: #f0a030; }
+
+/* 표 */
+.table-wrap { overflow-x: auto; margin: 14px 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; background: #fff; }
+th, td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; }
+th { background: #f0f3fb; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+
+/* 카드 목록 */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 26px; }
+.grid a.item { display: block; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px; text-decoration: none; color: var(--text); }
+.grid a.item:hover { border-color: var(--accent); }
+.grid .item b { display: block; font-size: 17px; margin-bottom: 4px; }
+.grid .item span { color: var(--sub); font-size: 14px; }
+
+/* ---------- 버튼·입력 ---------- */
 .btn {
-  font: inherit;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 13px 28px;
-  border: 0;
-  border-radius: 10px;
-  background: #4a6cf7;
-  color: #fff;
-  cursor: pointer;
+  font: inherit; font-size: 17px; font-weight: bold;
+  padding: 12px 26px; border: 0; border-radius: 10px;
+  background: var(--accent); color: #fff; cursor: pointer;
 }
-.btn:hover { background: #3956d6; }
+.btn:hover { background: var(--accent-dark); }
 .btn:disabled { background: #a9b6f5; cursor: default; }
+.btn.ghost { background: #fff; color: var(--accent-dark); border: 1px solid var(--accent); }
+.btn.ghost:hover { background: #eef2ff; }
 
-/* ---------- 로또 ---------- */
-.lotto { text-align: center; }
-.lotto h2 { margin-bottom: 18px; }
-
-#balls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 26px;
-  min-height: 56px;
+input, select, textarea {
+  font: inherit; font-weight: normal;
+  padding: 10px 12px; border: 1px solid #d5d9ea; border-radius: 10px; background: #fff;
 }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
+textarea { resize: vertical; }
 
+/* ---------- 로또 도구 ---------- */
+.tool { text-align: center; }
+.tool .row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
+.tool label { font-size: 15px; color: var(--sub); }
+#sets { margin-top: 22px; display: flex; flex-direction: column; gap: 10px; align-items: center; min-height: 30px; }
+.set { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; }
+.set .tag { font-size: 13px; color: var(--sub); width: 34px; text-align: right; }
 .ball {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: bold; color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, .4);
 }
 .r1 { background: #f2b705; color: #222; text-shadow: none; }
 .r2 { background: #3b82f6; }
 .r3 { background: #ef4444; }
 .r4 { background: #6b7280; }
 .r5 { background: #22c55e; }
+#copy-msg { min-height: 22px; font-size: 14px; color: #1a8f4b; margin: 10px 0 0; }
+.tool .fine { font-size: 13px; color: var(--sub); margin: 12px 0 0; }
 
-/* ---------- 제휴 문의 폼 ---------- */
+/* ---------- 계산기 ---------- */
+.calc { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
+.calc input { width: 140px; }
+#calc-out p { margin: 6px 0; }
+#calc-out b { color: var(--accent-dark); }
+
+/* ---------- 폼 ---------- */
 form { display: flex; flex-direction: column; gap: 16px; }
-
-label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: bold; }
-.opt { font-weight: normal; color: #9094ad; }
-
-input, select, textarea {
-  font: inherit;
-  font-weight: normal;
-  padding: 11px 12px;
-  border: 1px solid #d5d9ea;
-  border-radius: 10px;
-  background: #fff;
-}
-input:focus, select:focus, textarea:focus {
-  outline: 2px solid #4a6cf7;
-  border-color: transparent;
-}
-textarea { resize: vertical; }
-
-#status { margin: 0; min-height: 22px; font-size: 15px; text-align: center; }
+label.f { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: bold; }
+.opt { font-weight: normal; color: #8a8fab; }
+#status { margin: 0; min-height: 22px; text-align: center; }
 #status.ok { color: #1a8f4b; }
 #status.err { color: #d33; }
-
-/* 스팸 방지 칸은 화면 밖으로 */
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+/* ---------- 바닥글 ---------- */
+.site-footer { border-top: 1px solid var(--line); background: #fff; margin-top: 30px; padding: 24px 0 30px; font-size: 14px; color: var(--sub); }
+.site-footer p { margin: 0 0 8px; }
+.site-footer a { color: var(--sub); }
+
+@media (max-width: 560px) {
+  h1 { font-size: 25px; }
+  .card, .article { padding: 22px 16px; }
+  .ball { width: 40px; height: 40px; font-size: 16px; }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>문의하기 · 제휴 문의 | 로또 확률 노트</title>
+  <meta name="description" content="로또 확률 노트에 대한 문의, 내용 오류 제보, 제휴·광고 제안을 남겨 주세요.">
+  <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="./">로또 확률 노트</a>
+  <nav aria-label="주요 메뉴">
+    <a href="./">번호 추천</a>
+    <a href="./probability.html">확률 계산기</a>
+    <a href="./guides.html">가이드</a>
+    <a href="./about.html">소개</a>
+    <a href="./contact.html" aria-current="page">문의</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <h1>문의하기</h1>
+  <p class="lead">내용 오류 제보, 사이트에 대한 의견, 제휴·광고 제안을 남겨 주세요. 확인한 뒤 적어 주신 이메일로 답변드립니다.</p>
+
+  <section class="card" id="partner">
+    <h2>문의·제휴 제안</h2>
+    <form id="partner-form" action="https://formspree.io/f/xgakrbkz" method="POST">
+      <label class="f">문의 유형
+        <select name="type" required>
+          <option value="">선택해 주세요</option>
+          <option>내용 오류·정정 제보</option>
+          <option>사이트 이용 문의</option>
+          <option>제휴·광고 제안</option>
+          <option>개인정보 관련 요청</option>
+          <option>기타</option>
+        </select>
+      </label>
+
+      <label class="f">이름 또는 회사·브랜드명
+        <input type="text" name="name" required placeholder="이름 또는 회사명">
+      </label>
+
+      <label class="f">이메일
+        <input type="email" name="email" required placeholder="name@example.com">
+      </label>
+
+      <label class="f">연락처 <span class="opt">(선택)</span>
+        <input type="tel" name="phone" placeholder="010-0000-0000">
+      </label>
+
+      <label class="f">문의 내용
+        <textarea name="message" rows="6" required placeholder="내용을 자유롭게 적어 주세요."></textarea>
+      </label>
+
+      <label class="f" style="flex-direction:row;align-items:flex-start;gap:8px;font-weight:normal">
+        <input type="checkbox" name="privacy_agree" value="동의" required style="margin-top:5px">
+        <span><a href="./privacy.html" target="_blank">개인정보처리방침</a>에 따라 문의 응대를 위해 이름·이메일 등을 수집·이용하는 데 동의합니다.</span>
+      </label>
+
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+
+      <button type="submit" id="submit-btn" class="btn">문의 보내기</button>
+      <p id="status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="wrap">
+  <p>로또 확률 노트는 동행복권과 관계없는 개인 학습 프로젝트입니다. 공식 정보는 <a href="https://www.dhlottery.co.kr" target="_blank" rel="noopener">동행복권</a>에서 확인하세요.</p>
+  <p>도박 문제로 도움이 필요하면 한국도박문제예방치유원 헬프라인 1336으로 상담할 수 있습니다.</p>
+  <p><a href="./about.html">소개</a> · <a href="./contact.html">문의</a> · <a href="./privacy.html">개인정보처리방침</a> · <a href="./terms.html">이용약관·면책</a></p>
+  <p>© 2026 로또 확률 노트</p>
+</div></footer>
+
+<script defer src="./partner.js"></script>
+</body>
+</html>
