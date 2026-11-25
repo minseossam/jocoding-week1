@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://minseossam.github.io/jocoding-week1/sitemap.xml
+Sitemap: https://jocoding-week1-bik.pages.dev/sitemap.xml
